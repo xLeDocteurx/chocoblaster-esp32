@@ -10,7 +10,7 @@ HIDkeyboard keyboard;
 const int buttonPin = 4;        // input pin for pushbutton
 const int ledPin = 2;           // input pin for pushbutton
 int previousButtonState = HIGH; // for checking the state of a pushButton
-int counter = 0;                // button push counter
+const char* message = "Demain je paye ma tournee de pains au chocolat !\nParce que l on dit pain au chocolat.\n\nCeci est un chocoblast. Pour votre securite n oubliez pas de verrouiller vos postes et de ne pas laisser Christopher brancher un peripherique usb douteux dessus.";
 
 void setup()
 {
@@ -21,12 +21,9 @@ void setup()
   digitalWrite(ledPin, HIGH);
 
   keyboard.begin();
-  // device.manufacturer(char*);
-  // device.product(char*); // product name
-  // device.serial(char*);  // serial number SN
-  // device.revision(uint16_t); // product revison
-  // device.deviceID(uint16_t VID, uint16_t PID);
-  // device.deviceID(uint16_t* VID, uint16_t* PID);
+  keyboard.manufacturer("Christopher Lenoir");
+  keyboard.product("Chocoblaster"); // product name
+  keyboard.serial("42");  // serial number SN
 
   vTaskDelay(pdMS_TO_TICKS(1000));
   digitalWrite(ledPin, LOW);
@@ -47,29 +44,28 @@ void loop()
 
     // Serial.println(dev.sendString(String("123456789\n"))?"OK":"FAIL");
 
-    // keyboard.sendKey(HID_KEY_HOME); // KEY_MENU ? // KEY_LEFT_GUI ?
-    // delay(100);
-    // keyboard.sendString("slack");
-    // delay(100);
-    // keyboard.sendKey(HID_KEY_ENTER);
-    // delay(100);
-    // keyboard.sendPress(HID_KEY_CONTROL_LEFT);
-    // delay(100);
-    // keyboard.sendPress(HID_KEY_F);
-    // delay(100);
-    // keyboard.sendRelease();
-    // delay(100);
-    // keyboard.sendString("#general");
-    // delay(100);
-    // keyboard.sendKey(HID_KEY_ARROW_UP);
-    // delay(100);
-    // keyboard.sendKey(HID_KEY_ENTER);
-    // delay(100);
-    keyboard.sendString("Demain je paye ma tournée de pains au chocolat !\nParce que l’on dit pain au chocolat.\n\nCeci est un chocoblast . Pour votre sécurité n’oubliez pas de verrouiller vos postes et de ne pas laisser Christopher brancher un périphérique usb douteux dessus.");
-    // delay(100);
-    // keyboard.sendKey(HID_KEY_ENTER);
-
-    // previousButtonState = buttonState;
+    // KEY_MENU ? // KEY_LEFT_GUI ?
+    printf("HID_KEY_HOME : %s\n", keyboard.sendKey(HID_KEY_HOME) ? "OK" : "FAIL");
+    delay(100);
+    printf("slack : %s\n", keyboard.sendString("slack") ? "OK" : "FAIL");
+    delay(10);
+    printf("HID_KEY_ENTER : %s\n", keyboard.sendKey(HID_KEY_ENTER) ? "OK" : "FAIL");
+    delay(100);
+    printf("HID_KEY_CONTROL_LEFT : %s\n", keyboard.sendPress(HID_KEY_CONTROL_LEFT) ? "OK" : "FAIL");
+    delay(10);
+    printf("HID_KEY_F : %s\n", keyboard.sendPress(HID_KEY_F) ? "OK" : "FAIL");
+    delay(10);
+    printf("sendRelease %s\n", keyboard.sendRelease() ? "OK" : "FAIL");
+    delay(50);
+    printf("#general : %s\n", keyboard.sendString("#general") ? "OK" : "FAIL");
+    delay(100);
+    printf("HID_KEY_ARROW_UP : %s\n", keyboard.sendKey(HID_KEY_ARROW_UP) ? "OK" : "FAIL");
+    delay(10);
+    printf("HID_KEY_ENTER : %s\n", keyboard.sendKey(HID_KEY_ENTER) ? "OK" : "FAIL");
+    delay(10);
+    printf("%s : %s\n", message, keyboard.sendString(message) ? "OK" : "FAIL");
+    delay(100);
+    printf("HID_KEY_ENTER : %s\n", keyboard.sendKey(HID_KEY_ENTER) ? "OK" : "FAIL");
   }
     previousButtonState = buttonState;
 }
