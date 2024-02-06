@@ -16,14 +16,13 @@ void setup()
 {
   pinMode(ledPin, OUTPUT);
   pinMode(buttonPin, INPUT);
-  // pinMode(buttonPin, INPUT_PULLDOWN);
 
   digitalWrite(ledPin, HIGH);
 
   keyboard.begin();
-  keyboard.manufacturer("Christopher Lenoir");
-  keyboard.product("Chocoblaster"); // product name
-  keyboard.serial("42");  // serial number SN
+  // keyboard.manufacturer("Christopher Lenoir");
+  // keyboard.product("Chocoblaster"); // product name
+  // keyboard.serial("42");  // serial number SN
 
   vTaskDelay(pdMS_TO_TICKS(1000));
   digitalWrite(ledPin, LOW);
@@ -66,8 +65,10 @@ void loop()
     printf("%s : %s\n", message, keyboard.sendString(message) ? "OK" : "FAIL");
     delay(100);
     printf("HID_KEY_ENTER : %s\n", keyboard.sendKey(HID_KEY_ENTER) ? "OK" : "FAIL");
+
   }
-    previousButtonState = buttonState;
+  
+  previousButtonState = buttonState;
 }
 
 #endif
