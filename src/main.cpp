@@ -107,12 +107,12 @@ void loop()
     if(!stepRes) {
      return;
     } 
-    // delay(100);
-    // stepRes = keyboard.sendKey(HID_KEY_ENTER);
-    //   printf("HID_KEY_ENTER : %s\n", stepRes ? "OK" : "FAIL");
-    // if(!stepRes) {
-    //  return;
-    // } 
+    delay(100);
+    stepRes = keyboard.sendKey(HID_KEY_ENTER);
+    printf("HID_KEY_ENTER : %s\n", stepRes ? "OK" : "FAIL");
+    if(!stepRes) {
+     return;
+    } 
   }
   
   previousButtonState = buttonState;
