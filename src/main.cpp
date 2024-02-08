@@ -49,59 +49,70 @@ void loop()
     // bool stepRes = keyboard.sendKey(HID_KEY_HOME);
     bool stepRes = keyboard.sendKey(HID_KEY_MENU);
     // bool stepRes = keyboard.sendKey(HID_KEY_GUI_LEFT);
-    if(stepRes) {
-      printf("HID_KEY_HOME : %s\n", stepRes ? "OK" : "FAIL");
+    printf("HID_KEY_HOME : %s\n", stepRes ? "OK" : "FAIL");
+    if(!stepRes) {
+     return;
     }
     delay(100);
     stepRes = keyboard.sendString("slack");
-    if(stepRes) {
-      printf("slack : %s\n", stepRes ? "OK" : "FAIL");
-    }
+    printf("slack : %s\n", stepRes ? "OK" : "FAIL");
+    if(!stepRes) {
+     return;
+    } 
     delay(10);
     stepRes = keyboard.sendKey(HID_KEY_ENTER);
-    if(stepRes) {
-      printf("HID_KEY_ENTER : %s\n", stepRes ? "OK" : "FAIL");
-    }
+    printf("HID_KEY_ENTER : %s\n", stepRes ? "OK" : "FAIL");
+    if(!stepRes) {
+     return;
+    } 
     delay(100);
     stepRes = keyboard.sendPress(HID_KEY_CONTROL_LEFT);
-    if(stepRes) {
-      printf("HID_KEY_CONTROL_LEFT : %s\n", stepRes ? "OK" : "FAIL");
-    }
+    printf("HID_KEY_CONTROL_LEFT : %s\n", stepRes ? "OK" : "FAIL");
+    if(!stepRes) {
+     return;
+    } 
     delay(10);
     stepRes = keyboard.sendPress(HID_KEY_F);
-    if(stepRes) {
-      printf("HID_KEY_F : %s\n", stepRes ? "OK" : "FAIL");
-    }
+    printf("HID_KEY_F : %s\n", stepRes ? "OK" : "FAIL");
+    if(!stepRes) {
+     return;
+    } 
     delay(10);
     stepRes = keyboard.sendRelease();
-    if(stepRes) {
-      printf("sendRelease : %s\n", stepRes ? "OK" : "FAIL");
-    }
+    printf("sendRelease : %s\n", stepRes ? "OK" : "FAIL");
+    if(!stepRes) {
+     return;
+    } 
     delay(50);
     stepRes = keyboard.sendString("#general");
-    if(stepRes) {
-      printf("#general : %s\n", stepRes ? "OK" : "FAIL");
-    }
+    printf("#general : %s\n", stepRes ? "OK" : "FAIL");
+    if(!stepRes) {
+     return;
+    } 
     delay(100);
     stepRes = keyboard.sendKey(HID_KEY_ARROW_UP);
-    if(stepRes) {
-      printf("HID_KEY_ARROW_UP : %s\n", stepRes ? "OK" : "FAIL");
-    }
+    printf("HID_KEY_ARROW_UP : %s\n", stepRes ? "OK" : "FAIL");
+    if(!stepRes) {
+     return;
+    } 
     delay(10);
     stepRes = keyboard.sendKey(HID_KEY_ENTER);
-    if(stepRes) {
-      printf("HID_KEY_ENTER : %s\n", stepRes ? "OK" : "FAIL");
-    }
+    printf("HID_KEY_ENTER : %s\n", stepRes ? "OK" : "FAIL");
+    if(!stepRes) {
+     return;
+    } 
     delay(10);
     stepRes = keyboard.sendString(message);
-    if(stepRes) {
-      printf("%s : %s\n", message, stepRes ? "OK" : "FAIL");
-    }
+    printf("%s : %s\n", message, stepRes ? "OK" : "FAIL");
+    if(!stepRes) {
+     return;
+    } 
     // delay(100);
     // stepRes = keyboard.sendKey(HID_KEY_ENTER);
-    // if(stepRes) {
     //   printf("HID_KEY_ENTER : %s\n", stepRes ? "OK" : "FAIL");
-    // }
+    // if(!stepRes) {
+    //  return;
+    // } 
   }
   
   previousButtonState = buttonState;
