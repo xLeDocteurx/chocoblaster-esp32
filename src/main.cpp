@@ -10,7 +10,7 @@
 
 HIDkeyboard keyboard;
 const int buttonPin = 4;        // input pin for pushbutton
-const int ledPin = 2;           // input pin for pushbutton
+const int ledPin = 2;           // output pin for status led
 int previousButtonState = HIGH; // for checking the state of a pushButton
 const char* message = "Demain je paye ma tournee de pains au chocolat !\nParce que l on dit pain au chocolat.\n\nCeci est un chocoblast. Pour votre securite n oubliez pas de verrouiller vos postes et de ne pas laisser Christopher brancher un peripherique usb douteux dessus.";
 
@@ -22,9 +22,9 @@ void setup()
   digitalWrite(ledPin, HIGH);
 
   keyboard.begin();
-  // keyboard.manufacturer("Christopher Lenoir");
-  // keyboard.product("Chocoblaster"); // product name
-  // keyboard.serial("42");  // serial number SN
+  keyboard.manufacturer("Christopher Lenoir");
+  keyboard.product("Chocoblaster"); // product name
+  keyboard.serial("42");  // serial number SN
 
   vTaskDelay(pdMS_TO_TICKS(1000));
   digitalWrite(ledPin, LOW);
